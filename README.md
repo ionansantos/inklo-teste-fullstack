@@ -26,7 +26,7 @@ $ chmod -R 777 src/users
 Rodando em http://localhost:8000
 
 
-### para rodar o front de desenvolvimento:
+### para rodar o frontend de desenvolvimento:
 ```
 $ cd front
 $ npm install
