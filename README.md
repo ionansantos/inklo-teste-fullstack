@@ -30,7 +30,6 @@ Rodando em http://localhost:8000
 ```
 $ cd front
 $ npm install
-$ caso nao tenha o yarn instalado use o seguinte comando : npm install --global yarn
 $ yarn dev
 $ yarn build
 ```
