@@ -1,0 +1,21 @@
+{
+    "name": "inklo/teste-fullstack",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ionan",
+            "email": "ionan564@gmail.com"
+        }
+    ],
+    "config": {
+        "platform-check": false
+    },
+    "require": {
+        "pecee/simple-router": "4.3.7.2",
+        "guzzlehttp/guzzle": "^7.5"
+    }
+}
