@@ -17,10 +17,10 @@
  ### para rodar o projeto digite os comandos a seguir:
  ```
 $ git clone https://github.com/ionansantos/inklo-teste-fullstack
+$ composer install
 $ docker-compose up -d --build
 $ docker exec -it app bash
 $ chmod -R 777 src/users
-$ composer install
  ```
  
 Rodando em http://localhost:8000
