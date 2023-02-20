@@ -4,18 +4,18 @@ import { storeToRefs } from "pinia";
 import Header from "../components/Header.vue";
 import { useRouter, useRoute } from "vue-router";
 import { ref } from "vue";
+import JsonCsv from "vue-json-csv";
 
 const router = useRouter();
 const route = useRoute();
 const userStore = useUserStore();
 const { user, users, isSave } = storeToRefs(userStore);
-const { saveLocal, verifySave } = useUserStore();
+const { getUserCsv, saveLocal, verifySave } = useUserStore();
 const totalRepos = ref(7);
 
 if (users.value.length == 0) {
   router.push("/");
 }
-
 verifySave(route.params.login);
 </script>
 
@@ -57,12 +57,32 @@ verifySave(route.params.login);
           </li>
         </ul>
         <button
-          class="btn btn-sm mb-2"
+          class="btn btn-sm m-2"
           @click="saveLocal(user.login)"
           :class="[isSave ? 'btn-secondary disabled' : 'btn-primary']"
         >
           {{ isSave ? "Salvo" : "salvar" }}
         </button>
+        <JsonCsv
+          :data="[getUserCsv()]"
+          :fields="[
+            'login',
+            'bio',
+            'location',
+            'following',
+            'followers',
+            'name',
+            'company',
+            'email',
+            'blog',
+            'twitter_username',
+            { label: 'Repositórios', value: 'repoData' },
+          ]"
+          name="usuario.csv"
+          class="btn btn-success btn-sm m-2"
+        >
+          Exportar CSV
+        </JsonCsv>
       </div>
     </div>
 
@@ -91,6 +111,7 @@ verifySave(route.params.login);
           class="bg-dark text-white list-group-item justify-content-between m-2 p-2"
           style="cursor: pointer"
           v-for="repo in user.repos.slice(0, 120)"
+          v-bind:key="repo"
         >
           {{ repo.name }}
           -

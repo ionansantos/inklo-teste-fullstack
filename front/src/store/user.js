@@ -42,6 +42,32 @@ export const useUserStore = defineStore('user', {
       }
     },
 
+    getUserCsv() {
+      const user = this.user;
+      let repoData = null;
+      if (user.repos && Array.isArray(user.repos)) {
+        const repos = user.repos;
+        const repoNames = repos.map((repo) => repo.name);
+        repoData = {
+          name: repoNames.join(', '),
+        };
+      }
+
+      return {
+        login: user.login,
+        bio: user.bio,
+        location: user.location,
+        following: user.following,
+        followers: user.followers,
+        name: user.name,
+        company: user.company,
+        email: user.email,
+        blog: user.blog,
+        twitter_username: user.twitter_username,
+        ...repoData,
+      };
+    },
+
     filterUsers(filter) {
       const users = this.users.filter(user => {
         return user.login.indexOf(filter.value.toLowerCase()) != -1;
@@ -58,7 +84,7 @@ export const useUserStore = defineStore('user', {
         console.error(error);
       }
     },    
-    
+
     async saveLocal(login) {
       const save = await axios.post(`${this.baseURL}/salvar-local`, {
         login,
@@ -68,7 +94,7 @@ export const useUserStore = defineStore('user', {
         this.isSave = false;
       })
     },
-    
+
     async verifySave(login) {
       const save = await axios.get(`${this.baseURL}/login?login=${login}`)
       .then(response => {
