@@ -67,16 +67,16 @@ verifySave(route.params.login);
           :data="[getUserCsv()]"
           :fields="[
             'login',
-            'bio',
-            'location',
-            'following',
-            'followers',
-            'name',
-            'company',
+            'biografia',
+            'localização',
+            'seguindo',
+            'seguidores',
+            'empresa',
             'email',
             'blog',
-            'twitter_username',
-            { label: 'Repositórios', value: 'repoData' },
+            'twitter',
+            'repositorios',
+            { label: 'repositorios', value: 'repoData' },
           ]"
           name="usuario.csv"
           class="btn btn-success btn-sm m-2"

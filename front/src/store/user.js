@@ -49,21 +49,20 @@ export const useUserStore = defineStore('user', {
         const repos = user.repos;
         const repoNames = repos.map((repo) => repo.name);
         repoData = {
-          name: repoNames.join(', '),
+          repositorios: repoNames.join(', '),
         };
       }
 
       return {
         login: user.login,
-        bio: user.bio,
-        location: user.location,
-        following: user.following,
-        followers: user.followers,
-        name: user.name,
-        company: user.company,
+        biografia: user.bio,
+        localização: user.location,
+        seguindo: user.following,
+        seguidores: user.followers,
+        empresa: user.company,
         email: user.email,
         blog: user.blog,
-        twitter_username: user.twitter_username,
+        twitter: user.twitter_username,
         ...repoData,
       };
     },
